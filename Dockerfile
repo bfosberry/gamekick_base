@@ -23,3 +23,7 @@ RUN mv confd /usr/local/bin/confd
 RUN rm confd_*.tar.gz
 RUN rm LICENSE
 RUN rm README.md
+
+ADD ./scripts /opt/scripts
+
+ENTRYPOINT ["/opt/scripts/run"]
