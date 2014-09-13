@@ -6,7 +6,7 @@ FROM ubuntu
 MAINTAINER bfosberry
 
 RUN apt-get update
-RUN apt-get -y install wget curl build-essential libxml2-dev libxslt-dev
+RUN apt-get -y install wget curl build-essential libxml2-dev libxslt-dev lsyncd
 
 #install chef
 RUN curl -L https://www.opscode.com/chef/install.sh | bash
