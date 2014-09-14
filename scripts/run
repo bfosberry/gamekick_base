@@ -4,12 +4,8 @@
 
 SLEEP_INTERVAL=5
 
-function get_info_value {
-  VALUE=`$ETCDCTL_COMMAND get $SERVER_ID/info/$1`
-}
-
 function clear_server {
-  $ETCDCTL_COMMAND rm --recursive $SERVER_ID
+  $ETCDCTL_COMMAND rm --recursive $SERVER_ID > /dev/null
 }
 
 function clear_logs {
@@ -22,10 +18,10 @@ function clear_state {
 
 function get_action {
   error_regex="Key not found"
-  ACTION_KEY="`$ETCDCTL_COMMAND ls /$SERVER_ID/actions | head -n 1`"
+  ACTION_KEY='$ETCDCTL_COMMAND ls /$SERVER_ID/actions | head -n 1'
   if [[ ! "$ACTION_KEY" =~ $error_regex  ]] && [[ ! "$ACTION_KEY" == "" ]]; then
-    ACTION_VALUE=`$ETCDCTL_COMMAND get $ACTION_KEY`
-    $ETCDCTL_COMMAND rm $ACTION_KEY
+    ACTION_VALUE='$ETCDCTL_COMMAND get $ACTION_KEY'
+    $ETCDCTL_COMMAND rm $ACTION_KEY > /dev/null
     ACTION_KEY=`echo "$ACTION_KEY" | sed -e "s/\/[a-z0-9A-Z_-]\+\/actions\///"`
   else
     ACTION_KEY=""
@@ -45,7 +41,7 @@ function dump_config {
   echo "" > $ENV_FILE
   for line in $($ETCDCTL_COMMAND ls /$SERVER_ID/config); do 
     key=`echo "$line" | sed -e "s/\/[a-z0-9A-Z_-]\+\/config\///"`
-    value=`$ETCDCTL_COMMAND get $line`
+    value='$ETCDCTL_COMMAND get $line'
     echo "$key=$value" >> $ENV_FILE
   done
 }
