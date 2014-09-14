@@ -75,7 +75,7 @@ while [ true ]; do
   get_action
 
   if [ "$ACTION_KEY" != "" ]; then
-    if [ "$ACTION_KEY" != "halt" ]; then
+    if [ "$ACTION_KEY" == "halt" ]; then
       clear_server
       game_server_action "halt"
       exit 0
