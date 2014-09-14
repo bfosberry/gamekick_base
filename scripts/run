@@ -75,7 +75,6 @@ while [ true ]; do
   get_action
 
   if [ "$ACTION_KEY" != "" ]; then
-    echo "Performing $ACTION_KEY"
     if [ "$ACTION_KEY" != "halt" ]; then
       clear_server
       game_server_action "halt"
