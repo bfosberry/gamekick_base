@@ -2,4 +2,4 @@
 # @author bfosberry
 . gamekick_common
 
-$ETCDCTL_COMMAND set "$SERVER_ID/info/$1" "$2"
+$ETCDCTL_COMMAND set "$SERVER_ID/info/$1" "$2" > /dev/null

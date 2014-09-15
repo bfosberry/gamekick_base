@@ -22,7 +22,7 @@ function get_action {
   if [[ ! "$ACTION_KEY" =~ $error_regex  ]] && [[ ! "$ACTION_KEY" == "" ]]; then
     ACTION_VALUE='$ETCDCTL_COMMAND get $ACTION_KEY'
     $ETCDCTL_COMMAND rm $ACTION_KEY > /dev/null
-    ACTION_KEY=`echo "$ACTION_KEY" | sed -e "s/\/[a-z0-9A-Z_-]\+\/actions\///"`
+    ACTION_KEY='echo "$ACTION_KEY" | sed -e "s/\/[a-z0-9A-Z_-]\+\/actions\///"'
   else
     ACTION_KEY=""
     ACTION_VALUE=""
