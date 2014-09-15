@@ -5,7 +5,7 @@
 SLEEP_INTERVAL=5
 
 function clear_server {
-  $ETCDCTL_COMMAND rm --recursive $SERVER_ID 2> /dev/null
+  $ETCDCTL_COMMAND rm --recursive _$SERVER_ID 2> /dev/null
 }
 
 function clear_logs {
@@ -18,7 +18,7 @@ function clear_state {
 
 function get_action {
   error_regex="Key not found"
-  ACTION_KEY=`$ETCDCTL_COMMAND ls /$SERVER_ID/actions 2> /dev/null | head -n 1`
+  ACTION_KEY=`$ETCDCTL_COMMAND ls /_$SERVER_ID/actions 2> /dev/null | head -n 1`
   if [[ ! "$ACTION_KEY" =~ $error_regex  ]] && [[ ! "$ACTION_KEY" == "" ]]; then
     ACTION_VALUE=`$ETCDCTL_COMMAND get $ACTION_KEY 2> /dev/null`
     $ETCDCTL_COMMAND rm $ACTION_KEY 2> /dev/null
@@ -39,14 +39,14 @@ function initialize_data_folder {
 
 function dump_config {
   echo "" > $ENV_FILE
-  for line in $($ETCDCTL_COMMAND ls /$SERVER_ID/config); do 
+  for line in $($ETCDCTL_COMMAND ls /_$SERVER_ID/config); do 
     key=`echo "$line" | sed -e "s/\/[a-z0-9A-Z_-]\+\/config\///"`
     value=`$ETCDCTL_COMMAND get $line 2> /dev/null`
     echo "$key=$value" >> $ENV_FILE
   done
 }
 
-if [ -z $SERVER_ID ]; then
+if [ -z _$SERVER_ID ]; then
   echo "No Server Id provided"
   exit 1
 fi
