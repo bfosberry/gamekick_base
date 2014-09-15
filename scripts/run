@@ -72,6 +72,8 @@ while [ true ]; do
   if [ ! game_server_online ]; then
     echo "Server is down"
     set_info_value "status" "stopped"
+    clear_server
+    exit 1
   fi
 
   get_action
