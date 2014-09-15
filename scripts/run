@@ -55,7 +55,9 @@ dump_config
 
 initialize_data_folder
 
-install_components
+if [ -f "install_components" ]; then
+  install_components
+fi
 
 if [ -f "write_config" ]; then
   write_config
