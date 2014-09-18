@@ -51,9 +51,9 @@ if [ -z _$SERVER_ID ]; then
   exit 1
 fi
 
-dump_config
-
 initialize_data_folder
+
+dump_config
 
 if [ -f "install_components" ]; then
   install_components
