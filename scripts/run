@@ -38,8 +38,8 @@ function initialize_data_folder {
 }
 
 function dump_config {
-  echo "" > $ENV_FILE
-  for line in $($ETCDCTL_COMMAND ls /_$SERVER_ID/config); do 
+  touch $ENV_FILE
+  for line in `$ETCDCTL_COMMAND ls /_$SERVER_ID/config 2> /dev/null`; do
     key=`echo "$line" | sed -e "s/\/[a-z0-9A-Z_-]\+\/config\///"`
     value=`$ETCDCTL_COMMAND get $line 2> /dev/null`
     echo "$key=$value" >> $ENV_FILE
