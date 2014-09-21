@@ -32,7 +32,7 @@ function get_action {
 function initialize_data_folder {
     mkdir -p "$DATA_FOLDER/state"
     mkdir -p "$DATA_FOLDER/logs"
-    if [ -f "initialize_game_folder" ]; then
+    if type initialize_game_folder >/dev/null 2>&1; then
       initialize_game_folder
     fi
 }
@@ -55,11 +55,11 @@ initialize_data_folder
 
 dump_config
 
-if [ -f "install_components" ]; then
+if type install_components >/dev/null 2>&1; then
   install_components
 fi
 
-if [ -f "write_config" ]; then
+if type write_config >/dev/null 2>&1; then
   write_config
 fi
 
