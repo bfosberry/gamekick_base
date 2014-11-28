@@ -1,6 +1,0 @@
-#!/bin/bash
-# @author bfosberry
-
-echo "Error: $1"
-set_info_value "status" "Errored"
-set_info_value "error" "$1"

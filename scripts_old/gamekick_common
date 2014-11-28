@@ -1,3 +1,0 @@
-ETCDCTL_COMMAND="/opt/etcd/etcdctl --no-sync --peers http://$ETCD_SERVER"
-DATA_FOLDER="/opt/data/"
-ENV_FILE="/opt/data/config.env"

@@ -1,9 +1,0 @@
-#!/bin/bash
-# @author bfosberry
-. gamekick_common
-
-VALUE=`$ETCDCTL_COMMAND get "_$SERVER_ID/info/$1" 2> /dev/null`
-if [[ ! "$VALUE" =~ /Error\:\s+100\:\sKey\snot\sfound/ ]]; then
-  VALUE=""
-fi
-echo $VALUE
