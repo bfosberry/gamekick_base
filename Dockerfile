@@ -15,15 +15,14 @@ RUN curl -L https://www.opscode.com/chef/install.sh | bash
 RUN wget https://github.com/coreos/etcd/releases/download/v0.4.6/etcd-v0.4.6-linux-amd64.tar.gz
 RUN tar -xzf etcd-v0.4.6-linux-amd64.tar.gz
 RUN mv etcd-v0.4.6-linux-amd64 /opt/etcd
+RUN rm etcd_*.tar.gz
 
 # install confd
 RUN wget -O confd_0.3.0_linux_amd64.tar.gz https://github.com/kelseyhightower/confd/releases/download/v0.3.0/confd_0.3.0_linux_amd64.tar.gz
 RUN tar -zxvf confd_0.3.0_linux_amd64.tar.gz
 RUN mv confd /usr/local/bin/confd
 RUN rm confd_*.tar.gz
-RUN rm LICENSE
-RUN rm README.md
 
 ADD ./scripts /opt/scripts
 
-ENTRYPOINT ["/opt/scripts/run"]
+ENTRYPOINT ["/opt/scripts/start.sh"]
