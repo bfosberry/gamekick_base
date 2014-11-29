@@ -6,8 +6,6 @@ if [ -z _$SERVER_ID ]; then
   exit 1
 fi
 
-dump_config
-
 if type install_components >/dev/null 2>&1; then
   install_components
 fi
