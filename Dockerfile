@@ -5,6 +5,7 @@
 FROM ubuntu
 MAINTAINER bfosberry
 
+USER root
 RUN apt-get update
 RUN apt-get -y install wget curl build-essential libxml2-dev libxslt-dev lsyncd
 
@@ -24,5 +25,9 @@ RUN mv confd /usr/local/bin/confd
 RUN rm confd_*.tar.gz
 
 ADD ./scripts /opt/scripts
+
+ENV PATH /opt/scripts/:$PATH
+ENV DATA_FOLDER /opt/data/
+RUN mkdir -p $DATA_FOLDER
 
 ENTRYPOINT ["/opt/scripts/start.sh"]
