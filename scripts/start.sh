@@ -1,7 +1,7 @@
 #!/bin/bash
 # @author bfosberry
 
-if [ -z _$SERVER_ID ]; then
+if [ -z $SERVER_ID ]; then
   echo "No Server Id provided"
   exit 1
 fi
