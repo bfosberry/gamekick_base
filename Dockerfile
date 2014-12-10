@@ -8,6 +8,7 @@ MAINTAINER bfosberry
 USER root
 
 RUN groupadd -r appuser && useradd -r -m -g appuser appuser
+RUN echo "appuser ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers
 
 RUN apt-get update && apt-get -y install \ 
   wget \
