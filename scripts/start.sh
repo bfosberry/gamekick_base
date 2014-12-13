@@ -1,6 +1,8 @@
 #!/bin/bash
 # @author bfosberry
 
+sudo chown -R appuser:appuser /opt
+
 if [ -z $SERVER_ID ]; then
   echo "No Server Id provided"
   exit 1
