@@ -15,7 +15,8 @@ RUN apt-get update && apt-get -y install \
   curl \
   build-essential \ 
   libxml2-dev \
-  libxslt-dev
+  libxslt-dev \
+  screen
 
 # install confd
 RUN wget -O confd_0.3.0_linux_amd64.tar.gz https://github.com/kelseyhightower/confd/releases/download/v0.3.0/confd_0.3.0_linux_amd64.tar.gz

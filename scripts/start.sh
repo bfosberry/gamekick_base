@@ -16,4 +16,4 @@ if type write_config >/dev/null 2>&1; then
   write_config
 fi
 
-run
+bash --login -c run
