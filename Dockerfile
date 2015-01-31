@@ -19,10 +19,8 @@ RUN apt-get update && apt-get -y install \
   screen
 
 # install confd
-RUN wget -O confd_0.3.0_linux_amd64.tar.gz https://github.com/kelseyhightower/confd/releases/download/v0.3.0/confd_0.3.0_linux_amd64.tar.gz
-RUN tar -zxvf confd_0.3.0_linux_amd64.tar.gz
-RUN mv confd /usr/local/bin/confd
-RUN rm confd_*.tar.gz
+RUN wget https://github.com/kelseyhightower/confd/releases/download/v0.7.1/confd-0.7.1-linux-amd64
+RUN mv confd-0.7.1-linux-amd64 /usr/local/bin/confd && chmod +x /usr/local/bin/confd
 
 ENV PATH /opt/scripts/:$PATH
 
